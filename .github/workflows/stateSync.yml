@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Print variable ${{ vars.JAVA_VERSION }}
+      id: info
       uses: jaywcjlove/github-action-package@main
     - run: echo "version - ${{ steps.info.outputs.version }}"
     - name: Print variable2
