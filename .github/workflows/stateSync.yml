@@ -28,6 +28,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ vars.DOCKER_IMAGE }}:${{steps.info.outputs.version}}
+          tags: ${{ vars.DOCKER_IMAGE }}:${{steps.info.outputs.version}},${{ vars.DOCKER_IMAGE }}:latest
       - name: docker images
         run: docker images
