@@ -4,13 +4,14 @@
 name: Docker CI/CD
 
 on:
-  push:
+  pull_request:
     branches: ["master"]
+    types: [closed]
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v3
       - name: Read package.json
