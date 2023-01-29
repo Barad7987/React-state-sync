@@ -14,12 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Print variable ${{ vars.JAVA_VERSION }}
+    - name: Read package.json
       id: info
       uses: jaywcjlove/github-action-package@main
-    - run: echo "version - ${{ steps.info.outputs.version }}"
-    - name: Print variable2
-      run: echo '${{ vars.JAVA_VERSION }}
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Login to Docker Hub
@@ -27,3 +24,11 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: ${{ vars.DOCKER_IMAGE }}:latest
+    - name: docker images
+      run: docker images
+
