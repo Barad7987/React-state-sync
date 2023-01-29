@@ -15,7 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Print variable ${{ vars.JAVA_VERSION }}
-      run: echo repository variable $JAVA_VERSION
+      run: echo 'export TRADEBLOQ_VERSION="'$(cat ./package.json | jq -r '.version')'"' >> "$BASH_ENV"
+    - name: Print variable2
+      run: echo '${{ vars.JAVA_VERSION }}
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Login to Docker Hub
