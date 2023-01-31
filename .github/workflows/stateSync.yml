@@ -23,7 +23,8 @@ jobs:
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v1
         with:
-          service_account: {{ secrets.GCP_SERVICE_ACCOUNT }}
-          workload_identity_provider: {{ secrets.GCP_WORKLOAD_IDENTIFY_PROVIDER }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTIFY_PROVIDER }}
       - name: Describe account
-        run: gcloud iam service-accounts describe {{ secrets.GCP_SERVICE_ACCOUNT }}
+        run: gcloud iam service-accounts describe ${{ secrets.GCP_SERVICE_ACCOUNT }}
