@@ -17,9 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run production build script
-        run: npm run build:env.production
-
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v1
         with:
