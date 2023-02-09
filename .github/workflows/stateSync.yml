@@ -17,13 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up gcloud
-        uses: google-github-actions/setup-gcloud@v1
-      - name: Login
-        uses: google-github-actions/auth@v1
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTIFY_PROVIDER }}
-      - name: Describe account
-        run: gcloud iam service-accounts describe ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: command ls
+        run: ls
+
+      - name: command cat
+        run: cat app.yaml
